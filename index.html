@@ -5,59 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>William Kojumian | Robotics & AI</title>
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
-    header { background: #2c3e50; color: white; padding: 50px 20px; text-align: center; }
-    header h1 { margin: 0; font-size: 2.5em; }
-    header p { margin: 10px 0 0; font-size: 1.2em; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+    }
 
-    section { padding: 50px 20px; max-width: 800px; margin: auto; }
-    h2 { color: #2c3e50; border-bottom: 2px solid #2980b9; display: inline-block; margin-bottom: 20px; }
-    a { color: #2980b9; text-decoration: none; }
-    ul { list-style: none; padding: 0; }
-    li { margin-bottom: 10px; }
-    footer { text-align: center; padding: 20px; background: #ecf0f1; }
-  </style>
-</head>
-<body>
+    /* Sidebar */
+    #sidebar {
+      width: 250px;
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-<header>
-  <h1>Hi, I’m William Kojumian</h1>
-  <p>Master’s student in Robotics Engineering | AI & Robotics Enthusiast</p>
-</header>
+    #sidebar img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>I’m passionate about robotics, AI, and creating innovative solutions. Currently pursuing my Master’s in Robotics Engineering and working on projects that merge hardware and software to solve real-world problems.</p>
-</section>
+    #sidebar h2 {
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
 
-<section id="projects">
-  <h2>Projects</h2>
-  <ul>
-    <li><a href="https://github.com/Twillur/robotics-project-1">Robotics Project 1</a> – Autonomous navigation robot</li>
-    <li><a href="https://github.com/Twillur/ai-project-2">AI Project 2</a> – Machine learning for object detection</li>
-    <li><a href="https://github.com/Twillur/robotics-project-3">Robotics Project 3</a> – Robot arm control system</li>
-  </ul>
-</section>
+    #sidebar a {
+      color: white;
+      text-decoration: none;
+      margin: 5px 0;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-<section id="skills">
-  <h2>Skills</h2>
-  <ul>
-    <li>Python, C++, ROS</li>
-    <li>Machine Learning & AI</li>
-    <li>Robotics Simulation & Control</li>
-    <li>Embedded Systems & Electronics</li>
-  </ul>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:WilliamKoju@gmail.com">WilliamKoju@gmail.com</a></p>
-  <p>GitHub: <a href="https://github.com/Twillur">https://github.com/Twillur</a></p>
-</section>
-
-<footer>
-  <p>© 2025 William Kojumian</p>
-</footer>
-
-</body>
-</html>
+    #sidebar
