@@ -46,4 +46,83 @@
       cursor: pointer;
     }
 
-    #sidebar
+    #sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content */
+    #main-content {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #2980b9;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    p, li {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    ul { padding-left: 20px; }
+  </style>
+</head>
+<body>
+
+  <div id="sidebar">
+    <img src="your-photo.jpg" alt="William Kojumian">
+    <h2>William Kojumian</h2>
+    <a onclick="showContent('about')">About Me</a>
+    <a onclick="showContent('papers')">Papers</a>
+    <a onclick="showContent('updates')">Updates</a>
+    <a onclick="showContent('podcast')">Podcast</a>
+    <a onclick="showContent('substack')">Substack</a>
+  </div>
+
+  <div id="main-content">
+    <!-- Default content -->
+    <h2>About Me</h2>
+    <p>I’m passionate about robotics, AI, and creating innovative solutions. Currently pursuing my Master’s in Robotics Engineering and working on projects that merge hardware and software to solve real-world problems.</p>
+  </div>
+
+  <script>
+    const content = {
+      about: `
+        <h2>About Me</h2>
+        <p>I’m passionate about robotics, AI, and creating innovative solutions. Currently pursuing my Master’s in Robotics Engineering and working on projects that merge hardware and software to solve real-world problems.</p>
+      `,
+      papers: `
+        <h2>Papers</h2>
+        <ul>
+          <li><a href="#">Paper 1</a></li>
+          <li><a href="#">Paper 2</a></li>
+          <li><a href="#">Paper 3</a></li>
+        </ul>
+      `,
+      updates: `
+        <h2>Updates</h2>
+        <p>Latest updates about my research, projects, and robotics work will appear here.</p>
+      `,
+      podcast: `
+        <h2>Podcast</h2>
+        <p>Links to my podcasts or interviews will be available here.</p>
+      `,
+      substack: `
+        <h2>Substack</h2>
+        <p>Read my newsletter and posts on Substack here.</p>
+      `
+    };
+
+    function showContent(section) {
+      document.getElementById('main-content').innerHTML = content[section];
+    }
+  </script>
+
+</body>
+</html>
