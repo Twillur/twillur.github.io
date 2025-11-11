@@ -5,49 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>William Kojumian | Robotics & AI</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
-      height: 100vh;
+      min-height: 100vh;
+      background-color: #f8f9fa;
+      color: #333;
     }
 
     /* Sidebar */
     #sidebar {
-      width: 250px;
-      background: #2c3e50;
+      width: 280px;
+      background: linear-gradient(to bottom, #2c3e50, #1a2530);
       color: white;
-      padding: 20px;
-      box-sizing: border-box;
+      padding: 30px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 100;
     }
 
     #sidebar img {
-      width: 150px;
-      height: 150px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      border: 4px solid #3498db;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     #sidebar h2 {
-      margin: 0 0 20px 0;
+      margin: 0 0 30px 0;
       text-align: center;
+      font-size: 24px;
+      font-weight: 600;
     }
 
-    #sidebar a {
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .nav-link {
       color: white;
       text-decoration: none;
-      margin: 5px 0;
-      font-weight: bold;
-      cursor: pointer;
+      margin: 8px 0;
+      padding: 12px 15px;
+      font-weight: 500;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
     }
 
-    #sidebar a:hover {
-      text-decoration: underline;
+    .nav-link:hover {
+      background-color: #3498db;
+      transform: translateX(5px);
+    }
+
+    .nav-link.active {
+      background-color: #2980b9;
+    }
+
+    .nav-link i {
+      margin-right: 10px;
+      font-size: 18px;
     }
 
     /* Main content */
@@ -55,72 +88,330 @@
       flex: 1;
       padding: 40px;
       overflow-y: auto;
-      box-sizing: border-box;
+      background-color: white;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .content-section {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .content-section.active {
+      display: block;
     }
 
     h2 {
       color: #2c3e50;
-      border-bottom: 2px solid #2980b9;
-      display: inline-block;
-      margin-bottom: 20px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      font-size: 32px;
+      font-weight: 600;
     }
 
     p, li {
       font-size: 16px;
-      line-height: 1.5;
+      line-height: 1.6;
+      margin-bottom: 15px;
     }
 
-    ul { padding-left: 20px; }
+    ul { 
+      padding-left: 20px; 
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #3498db;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+
+    .paper-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .paper-list li {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-left: 4px solid #3498db;
+      margin-bottom: 15px;
+      border-radius: 0 5px 5px 0;
+    }
+
+    .update-item {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .update-date {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      
+      #sidebar {
+        width: 100%;
+        padding: 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      #sidebar img {
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+        margin-bottom: 0;
+      }
+      
+      .sidebar-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: 1;
+      }
+      
+      .nav-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 15px;
+        width: 100%;
+      }
+      
+      .nav-link {
+        margin: 5px;
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+      
+      #main-content {
+        padding: 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #sidebar {
+        flex-direction: column;
+      }
+      
+      #sidebar img {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+      }
+      
+      .nav-link {
+        width: 100%;
+        text-align: center;
+      }
+    }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
   <div id="sidebar">
-    <img src="your-photo.jpg" alt="William Kojumian">
-    <h2>William Kojumian</h2>
-    <a onclick="showContent('about')">About Me</a>
-    <a onclick="showContent('papers')">Papers</a>
-    <a onclick="showContent('updates')">Updates</a>
-    <a onclick="showContent('podcast')">Podcast</a>
-    <a onclick="showContent('substack')">Substack</a>
+    <img src="https://via.placeholder.com/300" alt="William Kojumian">
+    <div class="sidebar-content">
+      <h2>William Kojumian</h2>
+      <div class="nav-links">
+        <a class="nav-link active" onclick="showContent('about')">
+          <i class="fas fa-user"></i> About Me
+        </a>
+        <a class="nav-link" onclick="showContent('papers')">
+          <i class="fas fa-file-alt"></i> Papers
+        </a>
+        <a class="nav-link" onclick="showContent('updates')">
+          <i class="fas fa-newspaper"></i> Updates
+        </a>
+        <a class="nav-link" onclick="showContent('podcast')">
+          <i class="fas fa-podcast"></i> Podcast
+        </a>
+        <a class="nav-link" onclick="showContent('substack')">
+          <i class="fas fa-envelope-open-text"></i> Substack
+        </a>
+      </div>
+    </div>
   </div>
 
   <div id="main-content">
-    <!-- Default content -->
-    <h2>About Me</h2>
-    <p>I’m passionate about robotics, AI, and creating innovative solutions. Currently pursuing my Master’s in Robotics Engineering and working on projects that merge hardware and software to solve real-world problems.</p>
+    <!-- About Me Section -->
+    <div id="about" class="content-section active">
+      <h2>About Me</h2>
+      <p>I'm passionate about robotics, AI, and creating innovative solutions. Currently pursuing my Master's in Robotics Engineering and working on projects that merge hardware and software to solve real-world problems.</p>
+      
+      <p>My research focuses on autonomous navigation systems, machine learning applications in robotics, and human-robot interaction. I believe that the future of technology lies in creating intelligent systems that can seamlessly integrate into our daily lives.</p>
+      
+      <p>When I'm not working on robotics projects, I enjoy contributing to open-source communities, writing about emerging technologies, and participating in robotics competitions.</p>
+    </div>
+
+    <!-- Papers Section -->
+    <div id="papers" class="content-section">
+      <h2>Papers</h2>
+      <p>Here are some of my recent publications in the field of robotics and AI:</p>
+      
+      <ul class="paper-list">
+        <li>
+          <strong>Adaptive Path Planning for Autonomous Drones in Dynamic Environments</strong><br>
+          <em>International Journal of Robotics Research, 2023</em><br>
+          <a href="#">View PDF</a> | <a href="#">Cite</a>
+        </li>
+        <li>
+          <strong>Machine Learning Approaches for Real-time Object Recognition in Robotic Systems</strong><br>
+          <em>IEEE Robotics and Automation Letters, 2022</em><br>
+          <a href="#">View PDF</a> | <a href="#">Cite</a>
+        </li>
+        <li>
+          <strong>Human-Robot Collaboration: A Framework for Intuitive Interaction</strong><br>
+          <em>ACM Transactions on Human-Robot Interaction, 2022</em><br>
+          <a href="#">View PDF</a> | <a href="#">Cite</a>
+        </li>
+        <li>
+          <strong>Energy-Efficient Algorithms for Mobile Robot Navigation</strong><br>
+          <em>Robotics and Autonomous Systems, 2021</em><br>
+          <a href="#">View PDF</a> | <a href="#">Cite</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Updates Section -->
+    <div id="updates" class="content-section">
+      <h2>Updates</h2>
+      <p>Latest updates about my research, projects, and robotics work:</p>
+      
+      <div class="update-item">
+        <div class="update-date">June 15, 2023</div>
+        <h3>New Research Grant Awarded</h3>
+        <p>Our team has been awarded a $500,000 grant from the National Science Foundation to continue our work on adaptive navigation systems for autonomous vehicles in urban environments.</p>
+      </div>
+      
+      <div class="update-item">
+        <div class="update-date">May 22, 2023</div>
+        <h3>Conference Presentation</h3>
+        <p>Presented our latest paper at the International Conference on Robotics and Automation (ICRA) in London. The presentation was well-received, and we had productive discussions with researchers from leading institutions.</p>
+      </div>
+      
+      <div class="update-item">
+        <div class="update-date">April 10, 2023</div>
+        <h3>Open Source Project Launch</h3>
+        <p>Released RoboNav, an open-source framework for robot navigation that implements several state-of-the-art algorithms. The project is available on GitHub and has already garnered significant interest from the community.</p>
+        <a href="#">View on GitHub</a>
+      </div>
+    </div>
+
+    <!-- Podcast Section -->
+    <div id="podcast" class="content-section">
+      <h2>Podcast</h2>
+      <p>I occasionally share insights about robotics and AI through podcast interviews and discussions:</p>
+      
+      <div class="update-item">
+        <h3>The Future of Autonomous Systems</h3>
+        <p><em>Tech Frontiers Podcast, Episode 42</em></p>
+        <p>In this episode, I discuss the challenges and opportunities in developing truly autonomous systems that can operate in complex, unstructured environments.</p>
+        <a href="#">Listen Now</a>
+      </div>
+      
+      <div class="update-item">
+        <h3>AI Ethics in Robotics</h3>
+        <p><em>Ethical Tech Podcast, Episode 18</em></p>
+        <p>A conversation about the ethical considerations in robotics development, from bias in AI algorithms to the societal impact of automation.</p>
+        <a href="#">Listen Now</a>
+      </div>
+      
+      <div class="update-item">
+        <h3>From Student to Robotics Engineer</h3>
+        <p><em>Career Paths in Tech, Episode 7</em></p>
+        <p>Sharing my journey into robotics engineering and advice for students interested in pursuing a career in this exciting field.</p>
+        <a href="#">Listen Now</a>
+      </div>
+    </div>
+
+    <!-- Substack Section -->
+    <div id="substack" class="content-section">
+      <h2>Substack</h2>
+      <p>I write about robotics, AI, and technology trends in my Substack newsletter. Subscribe to stay updated with my latest thoughts and analyses:</p>
+      
+      <div class="update-item">
+        <h3>Why Explainable AI Matters for Robotics</h3>
+        <p><em>Published: May 5, 2023</em></p>
+        <p>Exploring the importance of transparency in AI systems, especially when these systems control physical robots that interact with humans and the environment.</p>
+        <a href="#">Read More</a>
+      </div>
+      
+      <div class="update-item">
+        <h3>The Convergence of Robotics and IoT</h3>
+        <p><em>Published: April 18, 2023</em></p>
+        <p>How the Internet of Things is creating new opportunities for robotics applications in smart homes, cities, and industries.</p>
+        <a href="#">Read More</a>
+      </div>
+      
+      <div class="update-item">
+        <h3>Lessons from Building My First Robot</h3>
+        <p><em>Published: March 22, 2023</em></p>
+        <p>A retrospective on the challenges and learnings from my first robotics project, with practical advice for beginners.</p>
+        <a href="#">Read More</a>
+      </div>
+      
+      <div style="background-color: #f0f8ff; padding: 20px; border-radius: 8px; margin-top: 30px; text-align: center;">
+        <h3>Subscribe to My Newsletter</h3>
+        <p>Get the latest articles and updates directly in your inbox.</p>
+        <form style="margin-top: 15px;">
+          <input type="email" placeholder="Your email address" style="padding: 10px; width: 70%; max-width: 300px; border: 1px solid #ddd; border-radius: 4px;">
+          <button type="submit" style="padding: 10px 20px; background-color: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 10px;">Subscribe</button>
+        </form>
+      </div>
+    </div>
   </div>
 
   <script>
-    const content = {
-      about: `
-        <h2>About Me</h2>
-        <p>I’m passionate about robotics, AI, and creating innovative solutions. Currently pursuing my Master’s in Robotics Engineering and working on projects that merge hardware and software to solve real-world problems.</p>
-      `,
-      papers: `
-        <h2>Papers</h2>
-        <ul>
-          <li><a href="#">Paper 1</a></li>
-          <li><a href="#">Paper 2</a></li>
-          <li><a href="#">Paper 3</a></li>
-        </ul>
-      `,
-      updates: `
-        <h2>Updates</h2>
-        <p>Latest updates about my research, projects, and robotics work will appear here.</p>
-      `,
-      podcast: `
-        <h2>Podcast</h2>
-        <p>Links to my podcasts or interviews will be available here.</p>
-      `,
-      substack: `
-        <h2>Substack</h2>
-        <p>Read my newsletter and posts on Substack here.</p>
-      `
-    };
-
-    function showContent(section) {
-      document.getElementById('main-content').innerHTML = content[section];
+    function showContent(sectionId) {
+      // Hide all content sections
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Show the selected section
+      document.getElementById(sectionId).classList.add('active');
+      
+      // Update active nav link
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Find and activate the clicked nav link
+      event.target.closest('.nav-link').classList.add('active');
     }
   </script>
 
