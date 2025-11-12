@@ -49,7 +49,7 @@
       text-align: center;
       font-size: 24px;
       font-weight: 600;
-      color: white; /* ADDED THIS LINE - forces pure white color */
+      color: white;
     }
 
     .nav-links {
@@ -137,17 +137,48 @@
       text-decoration: underline;
     }
 
-    .paper-list {
+    .project-list {
       list-style-type: none;
       padding-left: 0;
     }
 
-    .paper-list li {
+    .project-list li {
       background-color: #f8f9fa;
       padding: 15px;
       border-left: 4px solid #3498db;
       margin-bottom: 15px;
       border-radius: 0 5px 5px 0;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.3s ease;
+      border: 1px solid #e9ecef;
+    }
+
+    .social-link:hover {
+      background-color: #3498db;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .social-link i {
+      margin-right: 10px;
+      font-size: 20px;
     }
 
     .update-item {
@@ -215,6 +246,10 @@
       #main-content {
         padding: 25px;
       }
+      
+      .social-links {
+        justify-content: center;
+      }
     }
 
     @media (max-width: 480px) {
@@ -235,6 +270,10 @@
         width: 100%;
         text-align: center;
       }
+      
+      .social-links {
+        flex-direction: column;
+      }
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -249,17 +288,14 @@
         <a class="nav-link active" onclick="showContent('about')">
           <i class="fas fa-user"></i> About Me
         </a>
-        <a class="nav-link" onclick="showContent('papers')">
-          <i class="fas fa-file-alt"></i> Papers
-        </a>
-        <a class="nav-link" onclick="showContent('updates')">
-          <i class="fas fa-newspaper"></i> Updates
+        <a class="nav-link" onclick="showContent('projects')">
+          <i class="fas fa-code-branch"></i> Projects
         </a>
         <a class="nav-link" onclick="showContent('podcast')">
           <i class="fas fa-podcast"></i> Podcast
         </a>
-        <a class="nav-link" onclick="showContent('substack')">
-          <i class="fas fa-envelope-open-text"></i> Substack
+        <a class="nav-link" onclick="showContent('social')">
+          <i class="fas fa-share-alt"></i> Connect
         </a>
       </div>
     </div>
@@ -276,58 +312,19 @@
       <p>When I'm not working on robotics projects, I enjoy contributing to open-source communities, writing about emerging technologies, and participating in robotics competitions.</p>
     </div>
 
-    <!-- Papers Section -->
-    <div id="papers" class="content-section">
-      <h2>Papers</h2>
-      <p>Here are some of my recent publications in the field of robotics and AI:</p>
+    <!-- Projects Section -->
+    <div id="projects" class="content-section">
+      <h2>Projects</h2>
+      <p>Here are some of my recent projects in the field of robotics and AI:</p>
       
-      <ul class="paper-list">
+      <ul class="project-list">
         <li>
-          <strong>Adaptive Path Planning for Autonomous Drones in Dynamic Environments</strong><br>
-          <em>International Journal of Robotics Research, 2023</em><br>
-          <a href="#">View PDF</a> | <a href="#">Cite</a>
-        </li>
-        <li>
-          <strong>Machine Learning Approaches for Real-time Object Recognition in Robotic Systems</strong><br>
-          <em>IEEE Robotics and Automation Letters, 2022</em><br>
-          <a href="#">View PDF</a> | <a href="#">Cite</a>
-        </li>
-        <li>
-          <strong>Human-Robot Collaboration: A Framework for Intuitive Interaction</strong><br>
-          <em>ACM Transactions on Human-Robot Interaction, 2022</em><br>
-          <a href="#">View PDF</a> | <a href="#">Cite</a>
-        </li>
-        <li>
-          <strong>Energy-Efficient Algorithms for Mobile Robot Navigation</strong><br>
-          <em>Robotics and Autonomous Systems, 2021</em><br>
-          <a href="#">View PDF</a> | <a href="#">Cite</a>
+          <strong>Machine Learning Classification with the Iris Dataset (scikit-learn)</strong><br>
+          <em>Python, scikit-learn, pandas, matplotlib</em><br>
+          <p>Implemented various classification algorithms including SVM, Random Forest, and K-Nearest Neighbors to classify iris flowers based on their features. Achieved 97% accuracy with optimized hyperparameters.</p>
+          <a href="https://github.com/Twillur" target="_blank">View Code on GitHub</a>
         </li>
       </ul>
-    </div>
-
-    <!-- Updates Section -->
-    <div id="updates" class="content-section">
-      <h2>Updates</h2>
-      <p>Latest updates about my research, projects, and robotics work:</p>
-      
-      <div class="update-item">
-        <div class="update-date">June 15, 2023</div>
-        <h3>New Research Grant Awarded</h3>
-        <p>Our team has been awarded a $500,000 grant from the National Science Foundation to continue our work on adaptive navigation systems for autonomous vehicles in urban environments.</p>
-      </div>
-      
-      <div class="update-item">
-        <div class="update-date">May 22, 2023</div>
-        <h3>Conference Presentation</h3>
-        <p>Presented our latest paper at the International Conference on Robotics and Automation (ICRA) in London. The presentation was well-received, and we had productive discussions with researchers from leading institutions.</p>
-      </div>
-      
-      <div class="update-item">
-        <div class="update-date">April 10, 2023</div>
-        <h3>Open Source Project Launch</h3>
-        <p>Released RoboNav, an open-source framework for robot navigation that implements several state-of-the-art algorithms. The project is available on GitHub and has already garnered significant interest from the community.</p>
-        <a href="#">View on GitHub</a>
-      </div>
     </div>
 
     <!-- Podcast Section -->
@@ -357,39 +354,28 @@
       </div>
     </div>
 
-    <!-- Substack Section -->
-    <div id="substack" class="content-section">
-      <h2>Substack</h2>
-      <p>I write about robotics, AI, and technology trends in my Substack newsletter. Subscribe to stay updated with my latest thoughts and analyses:</p>
+    <!-- Social Media Section -->
+    <div id="social" class="content-section">
+      <h2>Connect With Me</h2>
+      <p>Follow my work and connect with me on these platforms:</p>
       
-      <div class="update-item">
-        <h3>Why Explainable AI Matters for Robotics</h3>
-        <p><em>Published: May 5, 2023</em></p>
-        <p>Exploring the importance of transparency in AI systems, especially when these systems control physical robots that interact with humans and the environment.</p>
-        <a href="#">Read More</a>
+      <div class="social-links">
+        <a href="https://github.com/Twillur" target="_blank" class="social-link">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://x.com/twillurX" target="_blank" class="social-link">
+          <i class="fab fa-twitter"></i> Twitter/X
+        </a>
+        <a href="https://www.linkedin.com/feed/" target="_blank" class="social-link">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://mastodon.social/@Twillur" target="_blank" class="social-link">
+          <i class="fab fa-mastodon"></i> Mastodon
+        </a>
       </div>
       
-      <div class="update-item">
-        <h3>The Convergence of Robotics and IoT</h3>
-        <p><em>Published: April 18, 2023</em></p>
-        <p>How the Internet of Things is creating new opportunities for robotics applications in smart homes, cities, and industries.</p>
-        <a href="#">Read More</a>
-      </div>
-      
-      <div class="update-item">
-        <h3>Lessons from Building My First Robot</h3>
-        <p><em>Published: March 22, 2023</em></p>
-        <p>A retrospective on the challenges and learnings from my first robotics project, with practical advice for beginners.</p>
-        <a href="#">Read More</a>
-      </div>
-      
-      <div style="background-color: #f0f8ff; padding: 20px; border-radius: 8px; margin-top: 30px; text-align: center;">
-        <h3>Subscribe to My Newsletter</h3>
-        <p>Get the latest articles and updates directly in your inbox.</p>
-        <form style="margin-top: 15px;">
-          <input type="email" placeholder="Your email address" style="padding: 10px; width: 70%; max-width: 300px; border: 1px solid #ddd; border-radius: 4px;">
-          <button type="submit" style="padding: 10px 20px; background-color: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 10px;">Subscribe</button>
-        </form>
+      <div style="margin-top: 30px;">
+        <p>Feel free to reach out for collaborations, questions about my projects, or just to connect!</p>
       </div>
     </div>
   </div>
