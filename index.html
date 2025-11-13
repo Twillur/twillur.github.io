@@ -428,12 +428,12 @@
     }
 
     .graduation-video-container {
-      flex: 0 0 300px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+  flex: 0 0 400px;      /* CHANGE: from '300px' to '400px' */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
     .graduation-video-container:hover {
       transform: translateY(-5px);
@@ -441,11 +441,12 @@
     }
 
     .graduation-video {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
-    }
+  width: 100%;
+  height: 225px;        /* CHANGE: from 'auto' to '225px' */
+  object-fit: cover;    /* ADD: this new property */
+  display: block;
+  border-radius: 12px;
+}
 
     .highlight-box {
       background: rgba(37, 117, 252, 0.1);
