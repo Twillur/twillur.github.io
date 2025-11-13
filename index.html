@@ -18,13 +18,6 @@
       --star-gold: #ffd700;
       --cosmic-silver: #c0c0c0;
       --accent-teal: #00d4ff;
-      --sun-color: #ffd42a;
-      --mercury-color: #b6b6b6;
-      --venus-color: #e39e54;
-      --earth-color: #6b93d6;
-      --mars-color: #c1440e;
-      --jupiter-color: #c19a6b;
-      --saturn-color: #e4d191;
     }
 
     body {
@@ -37,10 +30,11 @@
       color: var(--cosmic-silver);
       overflow-x: hidden;
       position: relative;
+      cursor: default;
     }
 
-    /* Celestial Background */
-    #celestial-bg {
+    /* Space Background */
+    #space-bg {
       position: fixed;
       top: 0;
       left: 0;
@@ -50,175 +44,126 @@
       overflow: hidden;
     }
 
+    /* Stars */
     .star {
       position: absolute;
       background-color: white;
       border-radius: 50%;
-      animation: twinkle 5s infinite;
+      animation: twinkle 8s infinite ease-in-out;
     }
 
-    .star.small { width: 1px; height: 1px; }
-    .star.medium { width: 2px; height: 2px; }
-    .star.large { width: 3px; height: 3px; }
-
-    /* Solar System */
-    .solar-system {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80vmin;
-      height: 80vmin;
-    }
-
-    .orbit {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .planet {
-      position: absolute;
-      border-radius: 50%;
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-    }
-
-    /* Sun */
-    .sun {
-      width: 60px;
-      height: 60px;
-      background: radial-gradient(circle at 30% 30%, var(--sun-color), #ff8c00);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 40px var(--sun-color);
-      z-index: 10;
-    }
-
-    /* Mercury */
-    .mercury-orbit {
-      width: 160px;
-      height: 160px;
-      animation: orbit 5s linear infinite;
-    }
-
-    .mercury {
-      width: 12px;
-      height: 12px;
-      background: radial-gradient(circle at 30% 30%, var(--mercury-color), #7a7a7a);
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    /* Venus */
-    .venus-orbit {
-      width: 220px;
-      height: 220px;
-      animation: orbit 8s linear infinite;
-    }
-
-    .venus {
-      width: 18px;
-      height: 18px;
-      background: radial-gradient(circle at 30% 30%, var(--venus-color), #b37232);
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+    .star.small { width: 2px; height: 2px; }
+    .star.medium { width: 3px; height: 3px; }
+    .star.large { width: 4px; height: 4px; }
 
     /* Earth */
-    .earth-orbit {
-      width: 300px;
-      height: 300px;
-      animation: orbit 12s linear infinite;
+    .earth-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      z-index: -1;
+      opacity: 0.15;
+      transition: transform 0.1s ease-out;
     }
 
     .earth {
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(circle at 30% 30%, var(--earth-color), #2c5aa0);
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 30%, #1e5799, #207cca, #2989d8, #7db9e8);
+      border-radius: 50%;
+      box-shadow: 
+        0 0 80px rgba(32, 124, 202, 0.3),
+        inset 0 0 100px rgba(0, 0, 0, 0.8);
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Mars */
-    .mars-orbit {
-      width: 380px;
-      height: 380px;
-      animation: orbit 20s linear infinite;
-    }
-
-    .mars {
-      width: 16px;
-      height: 16px;
-      background: radial-gradient(circle at 30% 30%, var(--mars-color), #8a2e0a);
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    /* Jupiter */
-    .jupiter-orbit {
-      width: 500px;
-      height: 500px;
-      animation: orbit 30s linear infinite;
-    }
-
-    .jupiter {
-      width: 40px;
-      height: 40px;
-      background: radial-gradient(circle at 30% 30%, var(--jupiter-color), #8c6d46);
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    /* Saturn */
-    .saturn-orbit {
-      width: 620px;
-      height: 620px;
-      animation: orbit 40s linear infinite;
-    }
-
-    .saturn {
-      width: 36px;
-      height: 36px;
-      background: radial-gradient(circle at 30% 30%, var(--saturn-color), #b89c65);
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    /* Saturn's rings */
-    .saturn::after {
+    .earth::before {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 60px;
-      height: 12px;
-      background: rgba(228, 209, 145, 0.5);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, transparent 30%, rgba(0, 0, 0, 0.3) 70%),
+        radial-gradient(circle at 70% 60%, transparent 20%, rgba(139, 69, 19, 0.2) 50%),
+        radial-gradient(circle at 40% 80%, transparent 25%, rgba(34, 139, 34, 0.3) 60%);
       border-radius: 50%;
-      transform: translate(-50%, -50%) rotate(20deg);
+    }
+
+    .earth::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 30%, transparent 40%, rgba(255, 255, 255, 0.1) 100%);
+      border-radius: 50%;
+    }
+
+    /* Shooting Stars */
+    .shooting-star {
+      position: absolute;
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, white, transparent);
+      transform: rotate(-45deg);
+      opacity: 0;
       z-index: -1;
     }
 
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
+    /* Floating Astronaut */
+    .astronaut {
+      position: fixed;
+      width: 80px;
+      height: 80px;
+      z-index: -1;
+      animation: float-astronaut 25s infinite ease-in-out;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
     }
 
-    @keyframes orbit {
+    .astronaut::before {
+      content: '👨‍🚀';
+      font-size: 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* Animations */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    @keyframes float-astronaut {
+      0%, 100% { 
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% { 
+        transform: translate(100px, 50px) rotate(5deg);
+      }
+      50% { 
+        transform: translate(50px, 100px) rotate(0deg);
+      }
+      75% { 
+        transform: translate(-80px, 60px) rotate(-5deg);
+      }
+    }
+
+    @keyframes shoot-star {
       0% {
-        transform: translate(-50%, -50%) rotate(0deg);
+        transform: translateX(-100px) translateY(-100px) rotate(-45deg);
+        opacity: 1;
       }
       100% {
-        transform: translate(-50%, -50%) rotate(360deg);
+        transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(-45deg);
+        opacity: 0;
       }
     }
 
@@ -428,7 +373,7 @@
     }
 
     .graduation-video-container {
-      flex: 0 0 300px;
+      flex: 0 0 400px;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -442,7 +387,8 @@
 
     .graduation-video {
       width: 100%;
-      height: auto;
+      height: 225px;
+      object-fit: cover;
       display: block;
       border-radius: 12px;
     }
@@ -709,7 +655,11 @@
         justify-content: center;
       }
       
-      .solar-system {
+      .earth-container {
+        display: none;
+      }
+      
+      .astronaut {
         display: none;
       }
     }
@@ -742,36 +692,9 @@
 </head>
 <body>
 
-  <!-- Celestial Background -->
-  <div id="celestial-bg">
-    <!-- Stars will be generated here -->
-    <div class="solar-system">
-      <div class="sun"></div>
-      
-      <div class="orbit mercury-orbit">
-        <div class="planet mercury"></div>
-      </div>
-      
-      <div class="orbit venus-orbit">
-        <div class="planet venus"></div>
-      </div>
-      
-      <div class="orbit earth-orbit">
-        <div class="planet earth"></div>
-      </div>
-      
-      <div class="orbit mars-orbit">
-        <div class="planet mars"></div>
-      </div>
-      
-      <div class="orbit jupiter-orbit">
-        <div class="planet jupiter"></div>
-      </div>
-      
-      <div class="orbit saturn-orbit">
-        <div class="planet saturn"></div>
-      </div>
-    </div>
+  <!-- Space Background -->
+  <div id="space-bg">
+    <!-- Stars, Earth, shooting stars, and astronaut will be generated here -->
   </div>
 
   <div id="sidebar">
@@ -940,11 +863,20 @@
   </div>
 
   <script>
-    // Create stars for the background
-    function createStars() {
-      const bgContainer = document.getElementById('celestial-bg');
-      const starCount = 200;
+    // Create space background elements
+    function createSpaceBackground() {
+      const bgContainer = document.getElementById('space-bg');
       
+      // Create Earth
+      const earthContainer = document.createElement('div');
+      earthContainer.className = 'earth-container';
+      const earth = document.createElement('div');
+      earth.className = 'earth';
+      earthContainer.appendChild(earth);
+      bgContainer.appendChild(earthContainer);
+      
+      // Create stars
+      const starCount = 150;
       for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
@@ -959,7 +891,7 @@
         star.classList.add(sizeClass);
         
         // Random animation delay
-        const delay = Math.random() * 5;
+        const delay = Math.random() * 8;
         
         star.style.left = `${x}%`;
         star.style.top = `${y}%`;
@@ -967,6 +899,68 @@
         
         bgContainer.appendChild(star);
       }
+      
+      // Create astronaut
+      const astronaut = document.createElement('div');
+      astronaut.className = 'astronaut';
+      astronaut.style.left = `${20 + Math.random() * 60}%`;
+      astronaut.style.top = `${20 + Math.random() * 60}%`;
+      bgContainer.appendChild(astronaut);
+      
+      // Create shooting stars periodically
+      setInterval(createShootingStar, 3000);
+    }
+    
+    // Create shooting stars
+    function createShootingStar() {
+      const bgContainer = document.getElementById('space-bg');
+      const shootingStar = document.createElement('div');
+      shootingStar.className = 'shooting-star';
+      
+      // Random starting position
+      const startX = -100;
+      const startY = Math.random() * 100;
+      
+      shootingStar.style.left = `${startX}px`;
+      shootingStar.style.top = `${startY}%`;
+      
+      // Random animation duration
+      const duration = 2 + Math.random() * 2;
+      
+      shootingStar.style.animation = `shoot-star ${duration}s linear`;
+      
+      bgContainer.appendChild(shootingStar);
+      
+      // Remove after animation completes
+      setTimeout(() => {
+        if (shootingStar.parentNode) {
+          shootingStar.parentNode.removeChild(shootingStar);
+        }
+      }, duration * 1000);
+    }
+    
+    // Earth rotation based on mouse position
+    let mouseX = 0;
+    let mouseY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      updateEarthRotation();
+    });
+    
+    function updateEarthRotation() {
+      const earthContainer = document.querySelector('.earth-container');
+      if (!earthContainer) return;
+      
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      
+      // Calculate rotation based on mouse position
+      const rotateX = ((mouseY / windowHeight) - 0.5) * 20; // -10 to 10 degrees
+      const rotateY = ((mouseX / windowWidth) - 0.5) * 20; // -10 to 10 degrees
+      
+      earthContainer.style.transform = `translate(-50%, -50%) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     }
 
     // Show content function
@@ -1016,21 +1010,4 @@
     }
 
     // Initialize
-    document.addEventListener('DOMContentLoaded', function() {
-      createStars();
-      
-      // Trigger initial animations
-      setTimeout(() => {
-        const fadeElements = document.querySelectorAll('.fade-in');
-        fadeElements.forEach(el => {
-          el.classList.add('visible');
-        });
-      }, 300);
-      
-      // Add scroll event listener
-      window.addEventListener('scroll', handleScrollAnimation);
-    });
-  </script>
-
-</body>
-</html>
+    document.addEventListener('DOMContent
