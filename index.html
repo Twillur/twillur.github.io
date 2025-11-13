@@ -403,6 +403,76 @@
       text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
     }
 
+    /* About Me Section Styles */
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .education-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .education-section {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+    }
+
+    .education-text {
+      flex: 1;
+    }
+
+    .graduation-video-container {
+      flex: 0 0 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .graduation-video-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0, 212, 255, 0.2);
+    }
+
+    .graduation-video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .highlight-box {
+      background: rgba(37, 117, 252, 0.1);
+      padding: 25px;
+      border-radius: 12px;
+      border-left: 4px solid var(--accent-teal);
+      margin: 20px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.05), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s;
+    }
+
+    .highlight-box:hover::before {
+      transform: translateX(100%);
+    }
+
     /* Project List with Images */
     .project-list {
       list-style-type: none;
@@ -571,25 +641,6 @@
       font-size: 20px;
     }
 
-    .update-item {
-      background: rgba(37, 117, 252, 0.1);
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
-    }
-
-    .update-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .update-date {
-      color: var(--accent-teal);
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -745,11 +796,41 @@
     <!-- About Me Section -->
     <div id="about" class="content-section active">
       <h2>About Me</h2>
-      <p class="fade-in">I'm passionate about robotics, AI, and creating innovative solutions. Currently pursuing my Master's in Robotics Engineering and working on projects that merge hardware and software to solve real-world problems.</p>
       
-      <p class="fade-in">My research focuses on autonomous navigation systems, machine learning applications in robotics, and human-robot interaction. I believe that the future of technology lies in creating intelligent systems that can seamlessly integrate into our daily lives.</p>
-      
-      <p class="fade-in">When I'm not working on robotics projects, I enjoy contributing to open-source communities, writing about emerging technologies, and participating in robotics competitions.</p>
+      <div class="about-content">
+        <div class="fade-in">
+          <p>I'm passionate about robotics, AI, and creating innovative solutions. Currently pursuing my Master's in Robotics Engineering and working on projects that merge hardware and software to solve real-world problems.</p>
+        </div>
+
+        <div class="education-section fade-in">
+          <div class="education-text">
+            <div class="highlight-box">
+              <h3 style="color: var(--star-gold); margin-bottom: 15px; font-size: 20px;">🎓 Education Background</h3>
+              <p><strong>Bachelor of Engineering Sciences</strong><br>
+              American University of Armenia (AUA)<br>
+              <em>2021 - 2025</em></p>
+              
+              <p>From 2021 to 2025, I pursued a Bachelor of Engineering Sciences at the American University of Armenia (AUA). During my studies, I gained a strong foundation in advanced mathematics, including numerical methods, ordinary differential equations (ODEs), and calculus. My engineering coursework encompassed core subjects such as electricity and magnetism, circuits, signals and systems, systems engineering, dynamics, statics, and mechanics. Additionally, I acquired practical skills in computer-aided design (CAD), aerodynamics, and other interdisciplinary engineering areas, providing me with a well-rounded understanding of both theoretical and applied engineering principles.</p>
+            </div>
+          </div>
+          
+          <div class="graduation-video-container">
+            <video class="graduation-video" autoplay muted loop playsinline>
+              <source src="GraduationStage.mov" type="video/mp4">
+              <source src="GraduationStage.mov" type="video/quicktime">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <div class="fade-in">
+          <p>My research focuses on autonomous navigation systems, machine learning applications in robotics, and human-robot interaction. I believe that the future of technology lies in creating intelligent systems that can seamlessly integrate into our daily lives.</p>
+        </div>
+
+        <div class="fade-in">
+          <p>When I'm not working on robotics projects, I enjoy contributing to open-source communities, writing about emerging technologies, and participating in robotics competitions.</p>
+        </div>
+      </div>
     </div>
 
     <!-- Projects Section -->
@@ -845,8 +926,8 @@
           <i class="fab fa-twitter"></i> Twitter/X
         </a>
         <a href="https://www.linkedin.com/in/williamkojumian/" target="_blank" class="social-link fade-in">
-  <i class="fab fa-linkedin"></i> LinkedIn
-</a>
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
         <a href="https://mastodon.social/@Twillur" target="_blank" class="social-link fade-in">
           <i class="fab fa-mastodon"></i> Mastodon
         </a>
