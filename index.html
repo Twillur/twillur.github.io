@@ -13,16 +13,18 @@
 
     :root {
       --deep-space: #0a0e17;
-      --warm-space: #1a1a2e;
       --nebula-purple: #6a11cb;
       --nebula-blue: #2575fc;
       --star-gold: #ffd700;
       --cosmic-silver: #c0c0c0;
       --accent-teal: #00d4ff;
-      --warm-orange: #ff9a3c;
-      --soft-pink: #ff6b9d;
-      --cozy-yellow: #ffd166;
-      --lantern-glow: #ff9e58;
+      --sun-color: #ffd42a;
+      --mercury-color: #b6b6b6;
+      --venus-color: #e39e54;
+      --earth-color: #6b93d6;
+      --mars-color: #c1440e;
+      --jupiter-color: #c19a6b;
+      --saturn-color: #e4d191;
     }
 
     body {
@@ -31,14 +33,14 @@
       padding: 0;
       display: flex;
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--warm-space) 0%, #16213e 50%, #0f3460 100%);
+      background-color: var(--deep-space);
       color: var(--cosmic-silver);
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Cozy Celestial Background */
-    #cozy-space-bg {
+    /* Celestial Background */
+    #celestial-bg {
       position: fixed;
       top: 0;
       left: 0;
@@ -50,209 +52,180 @@
 
     .star {
       position: absolute;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: white;
       border-radius: 50%;
-      animation: twinkle 8s infinite ease-in-out;
+      animation: twinkle 5s infinite;
     }
 
-    .star.small { width: 2px; height: 2px; }
-    .star.medium { width: 3px; height: 3px; }
-    .star.large { width: 4px; height: 4px; }
+    .star.small { width: 1px; height: 1px; }
+    .star.medium { width: 2px; height: 2px; }
+    .star.large { width: 3px; height: 3px; }
 
-    /* Cozy Celestial Objects */
-    .celestial-object {
-      position: absolute;
-      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-    }
-
-    /* Lantern Comets */
-    .lantern-comet {
-      width: 25px;
-      height: 25px;
-      background: radial-gradient(circle, var(--lantern-glow), #ff6b35);
-      border-radius: 50%;
-      animation: float-lantern 25s infinite ease-in-out;
-      box-shadow: 0 0 20px var(--lantern-glow);
-    }
-
-    /* Cloud Pillows */
-    .cloud-pillow {
-      width: 80px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      animation: float-cloud 40s infinite ease-in-out;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    /* Starlight Jars */
-    .starlight-jar {
-      width: 30px;
-      height: 45px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px 15px 5px 5px;
-      border: 2px solid rgba(255, 215, 0, 0.3);
-      animation: float-jar 35s infinite ease-in-out;
-    }
-
-    .starlight-jar::before {
-      content: '';
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      right: 5px;
-      bottom: 5px;
-      background: radial-gradient(circle, var(--cozy-yellow), transparent);
-      border-radius: 10px 10px 3px 3px;
-      animation: glow 4s infinite alternate;
-    }
-
-    /* Aurora Ribbons */
-    .aurora-ribbon {
-      width: 120px;
-      height: 8px;
-      background: linear-gradient(90deg, transparent, #ff6b9d, #00d4ff, transparent);
-      border-radius: 4px;
-      animation: float-ribbon 30s infinite ease-in-out;
-      opacity: 0.7;
-    }
-
-    /* Comet Cats */
-    .comet-cat {
-      width: 35px;
-      height: 20px;
-      background: radial-gradient(ellipse, var(--soft-pink), #ff9a3c);
-      border-radius: 50%;
-      animation: float-cat 45s infinite ease-in-out;
-      transform-origin: center;
-    }
-
-    .comet-cat::before, .comet-cat::after {
-      content: '';
-      position: absolute;
-      background: var(--soft-pink);
-      border-radius: 50%;
-    }
-
-    .comet-cat::before {
-      width: 12px;
-      height: 12px;
-      top: -5px;
-      left: 5px;
-    }
-
-    .comet-cat::after {
-      width: 8px;
-      height: 8px;
-      top: -3px;
-      right: 5px;
-    }
-
-    /* Dream Pillows */
-    .dream-pillow {
-      width: 50px;
-      height: 30px;
-      background: rgba(157, 78, 221, 0.2);
-      border-radius: 10px;
-      animation: float-pillow 38s infinite ease-in-out;
-      border: 1px solid rgba(157, 78, 221, 0.4);
-      backdrop-filter: blur(3px);
-    }
-
-    .dream-pillow::before {
-      content: '💭';
+    /* Solar System */
+    .solar-system {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 12px;
-      opacity: 0.7;
+      width: 80vmin;
+      height: 80vmin;
     }
 
-    /* Tea Planets */
-    .tea-planet {
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .planet {
+      position: absolute;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+    }
+
+    /* Sun */
+    .sun {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at 30% 30%, var(--sun-color), #ff8c00);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 40px var(--sun-color);
+      z-index: 10;
+    }
+
+    /* Mercury */
+    .mercury-orbit {
+      width: 160px;
+      height: 160px;
+      animation: orbit 5s linear infinite;
+    }
+
+    .mercury {
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle at 30% 30%, var(--mercury-color), #7a7a7a);
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Venus */
+    .venus-orbit {
+      width: 220px;
+      height: 220px;
+      animation: orbit 8s linear infinite;
+    }
+
+    .venus {
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle at 30% 30%, var(--venus-color), #b37232);
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Earth */
+    .earth-orbit {
+      width: 300px;
+      height: 300px;
+      animation: orbit 12s linear infinite;
+    }
+
+    .earth {
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle at 30% 30%, var(--earth-color), #2c5aa0);
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Mars */
+    .mars-orbit {
+      width: 380px;
+      height: 380px;
+      animation: orbit 20s linear infinite;
+    }
+
+    .mars {
+      width: 16px;
+      height: 16px;
+      background: radial-gradient(circle at 30% 30%, var(--mars-color), #8a2e0a);
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Jupiter */
+    .jupiter-orbit {
+      width: 500px;
+      height: 500px;
+      animation: orbit 30s linear infinite;
+    }
+
+    .jupiter {
       width: 40px;
       height: 40px;
-      background: radial-gradient(circle at 30% 30%, #8B4513, #4A2C2A);
-      border-radius: 50%;
-      animation: float-tea 42s infinite ease-in-out;
-      box-shadow: 0 0 15px rgba(139, 69, 19, 0.5);
+      background: radial-gradient(circle at 30% 30%, var(--jupiter-color), #8c6d46);
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    .tea-planet::before {
+    /* Saturn */
+    .saturn-orbit {
+      width: 620px;
+      height: 620px;
+      animation: orbit 40s linear infinite;
+    }
+
+    .saturn {
+      width: 36px;
+      height: 36px;
+      background: radial-gradient(circle at 30% 30%, var(--saturn-color), #b89c65);
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Saturn's rings */
+    .saturn::after {
       content: '';
       position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 15px;
-      height: 15px;
-      background: rgba(255, 255, 255, 0.1);
+      top: 50%;
+      left: 50%;
+      width: 60px;
+      height: 12px;
+      background: rgba(228, 209, 145, 0.5);
       border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(20deg);
+      z-index: -1;
     }
 
-    /* Animations */
     @keyframes twinkle {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.2); }
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
     }
 
-    @keyframes float-lantern {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(20px, 15px) rotate(5deg); }
-      50% { transform: translate(10px, 25px) rotate(0deg); }
-      75% { transform: translate(-15px, 10px) rotate(-5deg); }
-    }
-
-    @keyframes float-cloud {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
-      33% { transform: translate(30px, 20px) scale(1.1); opacity: 0.9; }
-      66% { transform: translate(-20px, 15px) scale(0.9); opacity: 0.6; }
-    }
-
-    @keyframes float-jar {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(25px, 10px) rotate(3deg); }
-      50% { transform: translate(15px, 20px) rotate(0deg); }
-      75% { transform: translate(-20px, 15px) rotate(-3deg); }
-    }
-
-    @keyframes float-ribbon {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
-      33% { transform: translate(40px, 25px) rotate(5deg); opacity: 0.8; }
-      66% { transform: translate(-30px, 15px) rotate(-5deg); opacity: 0.6; }
-    }
-
-    @keyframes float-cat {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      20% { transform: translate(25px, 20px) scale(1.1); }
-      40% { transform: translate(40px, 10px) scale(1); }
-      60% { transform: translate(20px, 30px) scale(0.9); }
-      80% { transform: translate(-15px, 20px) scale(1); }
-    }
-
-    @keyframes float-pillow {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(30px, 15px) rotate(2deg); }
-      50% { transform: translate(15px, 25px) rotate(0deg); }
-      75% { transform: translate(-25px, 10px) rotate(-2deg); }
-    }
-
-    @keyframes float-tea {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(35px, 20px) scale(1.05); }
-      66% { transform: translate(-25px, 15px) scale(0.95); }
-    }
-
-    @keyframes glow {
-      0% { opacity: 0.3; }
-      100% { opacity: 0.8; }
+    @keyframes orbit {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
     }
 
     /* Sidebar */
     #sidebar {
       width: 280px;
-      background: linear-gradient(to bottom, rgba(42, 15, 84, 0.85), rgba(10, 14, 23, 0.9));
+      background: linear-gradient(to bottom, rgba(42, 15, 84, 0.9), rgba(10, 14, 23, 0.9));
       color: white;
       padding: 30px 20px;
       display: flex;
@@ -598,6 +571,25 @@
       font-size: 20px;
     }
 
+    .update-item {
+      background: rgba(37, 117, 252, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .update-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .update-date {
+      color: var(--accent-teal);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -666,7 +658,7 @@
         justify-content: center;
       }
       
-      .celestial-object {
+      .solar-system {
         display: none;
       }
     }
@@ -699,9 +691,36 @@
 </head>
 <body>
 
-  <!-- Cozy Celestial Background -->
-  <div id="cozy-space-bg">
-    <!-- Stars and celestial objects will be generated here -->
+  <!-- Celestial Background -->
+  <div id="celestial-bg">
+    <!-- Stars will be generated here -->
+    <div class="solar-system">
+      <div class="sun"></div>
+      
+      <div class="orbit mercury-orbit">
+        <div class="planet mercury"></div>
+      </div>
+      
+      <div class="orbit venus-orbit">
+        <div class="planet venus"></div>
+      </div>
+      
+      <div class="orbit earth-orbit">
+        <div class="planet earth"></div>
+      </div>
+      
+      <div class="orbit mars-orbit">
+        <div class="planet mars"></div>
+      </div>
+      
+      <div class="orbit jupiter-orbit">
+        <div class="planet jupiter"></div>
+      </div>
+      
+      <div class="orbit saturn-orbit">
+        <div class="planet saturn"></div>
+      </div>
+    </div>
   </div>
 
   <div id="sidebar">
@@ -840,12 +859,11 @@
   </div>
 
   <script>
-    // Create cozy celestial background
-    function createCozySpace() {
-      const bgContainer = document.getElementById('cozy-space-bg');
+    // Create stars for the background
+    function createStars() {
+      const bgContainer = document.getElementById('celestial-bg');
+      const starCount = 200;
       
-      // Create stars
-      const starCount = 150;
       for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
@@ -860,7 +878,7 @@
         star.classList.add(sizeClass);
         
         // Random animation delay
-        const delay = Math.random() * 8;
+        const delay = Math.random() * 5;
         
         star.style.left = `${x}%`;
         star.style.top = `${y}%`;
@@ -868,37 +886,6 @@
         
         bgContainer.appendChild(star);
       }
-      
-      // Create cozy celestial objects
-      const objects = [
-        { type: 'lantern-comet', count: 8 },
-        { type: 'cloud-pillow', count: 6 },
-        { type: 'starlight-jar', count: 10 },
-        { type: 'aurora-ribbon', count: 5 },
-        { type: 'comet-cat', count: 7 },
-        { type: 'dream-pillow', count: 8 },
-        { type: 'tea-planet', count: 6 }
-      ];
-      
-      objects.forEach(objType => {
-        for (let i = 0; i < objType.count; i++) {
-          const obj = document.createElement('div');
-          obj.classList.add('celestial-object', objType.type);
-          
-          // Random position (avoid edges)
-          const x = 10 + Math.random() * 80;
-          const y = 10 + Math.random() * 80;
-          
-          // Random animation delay
-          const delay = Math.random() * 20;
-          
-          obj.style.left = `${x}%`;
-          obj.style.top = `${y}%`;
-          obj.style.animationDelay = `${delay}s`;
-          
-          bgContainer.appendChild(obj);
-        }
-      });
     }
 
     // Show content function
@@ -949,7 +936,7 @@
 
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
-      createCozySpace();
+      createStars();
       
       // Trigger initial animations
       setTimeout(() => {
