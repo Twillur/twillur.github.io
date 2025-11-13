@@ -18,6 +18,8 @@
       --star-gold: #ffd700;
       --cosmic-silver: #c0c0c0;
       --accent-teal: #00d4ff;
+      --shooting-star-blue: #4fc3f7;
+      --shooting-star-purple: #ba68c8;
     }
 
     body {
@@ -26,11 +28,10 @@
       padding: 0;
       display: flex;
       min-height: 100vh;
-      background-color: var(--deep-space);
+      background: linear-gradient(135deg, #0a0e17 0%, #16213e 50%, #0f3460 100%);
       color: var(--cosmic-silver);
       overflow-x: hidden;
       position: relative;
-      cursor: default;
     }
 
     /* Space Background */
@@ -47,7 +48,7 @@
     /* Stars */
     .star {
       position: absolute;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.8);
       border-radius: 50%;
       animation: twinkle 8s infinite ease-in-out;
     }
@@ -56,83 +57,22 @@
     .star.medium { width: 3px; height: 3px; }
     .star.large { width: 4px; height: 4px; }
 
-    /* Earth */
-    .earth-container {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      z-index: -1;
-      opacity: 0.15;
-      transition: transform 0.1s ease-out;
-    }
-
-    .earth {
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 30% 30%, #1e5799, #207cca, #2989d8, #7db9e8);
-      border-radius: 50%;
-      box-shadow: 
-        0 0 80px rgba(32, 124, 202, 0.3),
-        inset 0 0 100px rgba(0, 0, 0, 0.8);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .earth::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 30%, transparent 30%, rgba(0, 0, 0, 0.3) 70%),
-        radial-gradient(circle at 70% 60%, transparent 20%, rgba(139, 69, 19, 0.2) 50%),
-        radial-gradient(circle at 40% 80%, transparent 25%, rgba(34, 139, 34, 0.3) 60%);
-      border-radius: 50%;
-    }
-
-    .earth::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 30% 30%, transparent 40%, rgba(255, 255, 255, 0.1) 100%);
-      border-radius: 50%;
-    }
-
     /* Shooting Stars */
     .shooting-star {
       position: absolute;
-      width: 120px;
+      width: 150px;
       height: 2px;
-      background: linear-gradient(90deg, transparent, white, transparent);
-      transform: rotate(-45deg);
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--shooting-star-blue) 20%, 
+        var(--shooting-star-purple) 50%, 
+        var(--shooting-star-blue) 80%, 
+        transparent 100%);
+      border-radius: 50%;
+      filter: blur(1px);
       opacity: 0;
       z-index: -1;
-    }
-
-    /* Floating Astronaut */
-    .astronaut {
-      position: fixed;
-      width: 80px;
-      height: 80px;
-      z-index: -1;
-      animation: float-astronaut 25s infinite ease-in-out;
-      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-    }
-
-    .astronaut::before {
-      content: '👨‍🚀';
-      font-size: 60px;
-      position: absolute;
-      top: 0;
-      left: 0;
+      box-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
     }
 
     /* Animations */
@@ -141,28 +81,53 @@
       50% { opacity: 1; transform: scale(1.2); }
     }
 
-    @keyframes float-astronaut {
-      0%, 100% { 
-        transform: translate(0, 0) rotate(0deg);
+    @keyframes shoot-star-1 {
+      0% {
+        transform: translateX(-200px) translateY(-200px) rotate(-45deg);
+        opacity: 0;
       }
-      25% { 
-        transform: translate(100px, 50px) rotate(5deg);
+      10% {
+        opacity: 1;
       }
-      50% { 
-        transform: translate(50px, 100px) rotate(0deg);
+      90% {
+        opacity: 0.5;
       }
-      75% { 
-        transform: translate(-80px, 60px) rotate(-5deg);
+      100% {
+        transform: translateX(calc(100vw + 200px)) translateY(calc(100vh + 200px)) rotate(-45deg);
+        opacity: 0;
       }
     }
 
-    @keyframes shoot-star {
+    @keyframes shoot-star-2 {
       0% {
-        transform: translateX(-100px) translateY(-100px) rotate(-45deg);
+        transform: translateX(-150px) translateY(100px) rotate(-30deg);
+        opacity: 0;
+      }
+      15% {
         opacity: 1;
       }
+      85% {
+        opacity: 0.5;
+      }
       100% {
-        transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(-45deg);
+        transform: translateX(calc(100vw + 150px)) translateY(calc(-100vh - 100px)) rotate(-30deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes shoot-star-3 {
+      0% {
+        transform: translateX(100px) translateY(-150px) rotate(-60deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateX(calc(-100vw - 100px)) translateY(calc(100vh + 150px)) rotate(-60deg);
         opacity: 0;
       }
     }
@@ -654,14 +619,6 @@
       .social-links {
         justify-content: center;
       }
-      
-      .earth-container {
-        display: none;
-      }
-      
-      .astronaut {
-        display: none;
-      }
     }
 
     @media (max-width: 480px) {
@@ -694,7 +651,7 @@
 
   <!-- Space Background -->
   <div id="space-bg">
-    <!-- Stars, Earth, shooting stars, and astronaut will be generated here -->
+    <!-- Stars and shooting stars will be generated here -->
   </div>
 
   <div id="sidebar">
@@ -867,14 +824,6 @@
     function createSpaceBackground() {
       const bgContainer = document.getElementById('space-bg');
       
-      // Create Earth
-      const earthContainer = document.createElement('div');
-      earthContainer.className = 'earth-container';
-      const earth = document.createElement('div');
-      earth.className = 'earth';
-      earthContainer.appendChild(earth);
-      bgContainer.appendChild(earthContainer);
-      
       // Create stars
       const starCount = 150;
       for (let i = 0; i < starCount; i++) {
@@ -900,15 +849,8 @@
         bgContainer.appendChild(star);
       }
       
-      // Create astronaut
-      const astronaut = document.createElement('div');
-      astronaut.className = 'astronaut';
-      astronaut.style.left = `${20 + Math.random() * 60}%`;
-      astronaut.style.top = `${20 + Math.random() * 60}%`;
-      bgContainer.appendChild(astronaut);
-      
       // Create shooting stars periodically
-      setInterval(createShootingStar, 3000);
+      setInterval(createShootingStar, 2000);
     }
     
     // Create shooting stars
@@ -918,16 +860,20 @@
       shootingStar.className = 'shooting-star';
       
       // Random starting position
-      const startX = -100;
+      const startX = -150;
       const startY = Math.random() * 100;
       
       shootingStar.style.left = `${startX}px`;
       shootingStar.style.top = `${startY}%`;
       
-      // Random animation duration
-      const duration = 2 + Math.random() * 2;
+      // Random animation type
+      const animations = ['shoot-star-1', 'shoot-star-2', 'shoot-star-3'];
+      const animation = animations[Math.floor(Math.random() * animations.length)];
       
-      shootingStar.style.animation = `shoot-star ${duration}s linear`;
+      // Random animation duration
+      const duration = 3 + Math.random() * 2;
+      
+      shootingStar.style.animation = `${animation} ${duration}s ease-in-out`;
       
       bgContainer.appendChild(shootingStar);
       
@@ -937,30 +883,6 @@
           shootingStar.parentNode.removeChild(shootingStar);
         }
       }, duration * 1000);
-    }
-    
-    // Earth rotation based on mouse position
-    let mouseX = 0;
-    let mouseY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      updateEarthRotation();
-    });
-    
-    function updateEarthRotation() {
-      const earthContainer = document.querySelector('.earth-container');
-      if (!earthContainer) return;
-      
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
-      
-      // Calculate rotation based on mouse position
-      const rotateX = ((mouseY / windowHeight) - 0.5) * 20; // -10 to 10 degrees
-      const rotateY = ((mouseX / windowWidth) - 0.5) * 20; // -10 to 10 degrees
-      
-      earthContainer.style.transform = `translate(-50%, -50%) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     }
 
     // Show content function
@@ -1010,4 +932,21 @@
     }
 
     // Initialize
-    document.addEventListener('DOMContent
+    document.addEventListener('DOMContentLoaded', function() {
+      createSpaceBackground();
+      
+      // Trigger initial animations
+      setTimeout(() => {
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(el => {
+          el.classList.add('visible');
+        });
+      }, 300);
+      
+      // Add scroll event listener
+      window.addEventListener('scroll', handleScrollAnimation);
+    });
+  </script>
+
+</body>
+</html>
