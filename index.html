@@ -475,41 +475,55 @@
       transform: translateX(100%);
     }
 
+    /* Improved Skills Grid */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 25px;
     }
 
     .skill-card {
       background: var(--dark-panel);
       border: 1px solid var(--panel-border);
-      border-radius: 8px;
-      padding: 25px;
+      border-radius: 12px;
+      padding: 30px;
       transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      height: 100%;
     }
 
     .skill-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       border-color: var(--neon-blue);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 12px 25px rgba(0, 243, 255, 0.2);
     }
 
     .skill-icon {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: var(--neon-blue);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover .skill-icon {
+      transform: scale(1.1);
+      text-shadow: 0 0 15px var(--neon-blue);
     }
 
     .skill-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.2rem;
-      margin-bottom: 10px;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--text-primary);
     }
 
     .skill-desc {
       color: var(--text-secondary);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
 
     /* Projects Section */
@@ -818,6 +832,8 @@
           <em>2021 - 2025</em></p>
           
           <p>From 2021 to 2025, I pursued a Bachelor of Engineering Sciences at the American University of Armenia (AUA). During my studies, I gained a strong foundation in advanced mathematics, including numerical methods, ordinary differential equations (ODEs), and calculus. My engineering coursework encompassed core subjects such as electricity and magnetism, circuits, signals and systems, systems engineering, dynamics, statics, and mechanics. Additionally, I acquired practical skills in computer-aided design (CAD), aerodynamics, and other interdisciplinary engineering areas, providing me with a well-rounded understanding of both theoretical and applied engineering principles.</p>
+          
+          <p>My research focuses on autonomous navigation systems, machine learning applications in robotics, and human-robot interaction. I believe that the future of technology lies in creating intelligent systems that can seamlessly integrate into our daily lives. When I'm not working on robotics projects, I enjoy contributing to open-source communities, writing about emerging technologies, and participating in robotics competitions.</p>
         </div>
 
         <div class="education-video-container">
@@ -827,10 +843,6 @@
             Your browser does not support the video tag.
           </video>
         </div>
-
-        <p>My research focuses on autonomous navigation systems, machine learning applications in robotics, and human-robot interaction. I believe that the future of technology lies in creating intelligent systems that can seamlessly integrate into our daily lives.</p>
-
-        <p>When I'm not working on robotics projects, I enjoy contributing to open-source communities, writing about emerging technologies, and participating in robotics competitions.</p>
       </div>
       <div class="skills-grid">
         <div class="skill-card">
@@ -977,9 +989,3 @@
           <h3 class="project-title">Machine Learning Classification with the Iris Dataset (scikit-learn)</h3>
           <div class="project-tech">
             <span class="tech-tag">Python</span>
-            <span class="tech-tag">scikit-learn</span>
-            <span class="tech-tag">pandas</span>
-            <span class="tech-tag">matplotlib</span>
-          </div>
-          <p class="project-description">Implemented various classification algorithms including SVM, Random Forest, and K-Nearest Neighbors to classify iris flowers based on their features. Achieved 97% accuracy with optimized hyperparameters.</p>
-          <a href="https://github.com/Twillur/Machine-Learning-Classification-with-the-Iris-Dataset-scikit-learn-" target="_blank
