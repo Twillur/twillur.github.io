@@ -694,27 +694,27 @@
       margin-top: 20px;
     }
 
-    .social-link {
-      width: 45px;
-      height: 45px;
-      background: var(--dark-panel);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 1.2rem;
-      border: 1px solid var(--panel-border);
-      transition: all 0.3s ease;
-    }
+ .social-link {
+  width: 50px;
+  height: 50px;
+  background: var(--dark-panel);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--neon-blue);
+  font-size: 1.4rem;
+  border: 1px solid var(--panel-border);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
 
-    .social-link:hover {
-      color: var(--neon-blue);
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-      transform: translateY(-3px);
-    }
+.social-link:hover {
+  background: var(--neon-blue);
+  color: var(--deep-space);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.8);
+  transform: translateY(-3px);
+}
 
     /* Footer */
     footer {
@@ -1036,74 +1036,57 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="section-subtitle">Let's collaborate on the next generation of robotics and AI solutions</p>
-    </div>
-    <div class="contact-content">
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <div class="contact-text">
-            <h3>Email</h3>
-            <p>william.kojumian@example.com</p>
-          </div>
+  <section id="contact" class="section section-dark">
+  <div class="section-header">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-subtitle">Let's collaborate on the next generation of robotics and AI solutions</p>
+  </div>
+  <div class="contact-content">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <div class="contact-text">
-            <h3>Location</h3>
-            <p>Yerevan, Armenia</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-phone"></i>
-          </div>
-          <div class="contact-text">
-            <h3>Phone</h3>
-            <p>+374 XX XXX XXX</p>
-          </div>
-        </div>
-        <div class="social-links">
-          <a href="https://github.com/Twillur" target="_blank" class="social-link">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://x.com/twillurX" target="_blank" class="social-link">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/williamkojumian/" target="_blank" class="social-link">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://mastodon.social/@Twillur" target="_blank" class="social-link">
-            <i class="fab fa-mastodon"></i>
-          </a>
+        <div class="contact-text">
+          <h3>Email</h3>
+          <p>WilliamKoju@gmail.com</p>
         </div>
       </div>
-      <div class="contact-form">
-        <form id="contactForm">
-          <div class="form-group">
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-          </div>
-          <div class="form-group">
-            <input type="text" id="subject" name="subject" placeholder="Subject" required>
-          </div>
-          <div class="form-group">
-            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="contact-text">
+          <h3>Location</h3>
+          <p>UAE, Dubai</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <div class="contact-text">
+          <h3>Phone</h3>
+          <p>+971 50 845 8590</p>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/Twillur" target="_blank" class="social-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://x.com/twillurX" target="_blank" class="social-link">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/williamkojumian/" target="_blank" class="social-link">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://mastodon.social/@Twillur" target="_blank" class="social-link">
+          <i class="fab fa-mastodon"></i>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer>
