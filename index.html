@@ -39,6 +39,40 @@
       overflow-x: hidden;
     }
 
+    /* Floating Hexagons Background */
+    #hexagon-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .hexagon {
+      position: absolute;
+      width: 60px;
+      height: 34px;
+      background: rgba(0, 212, 255, 0.05);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.1;
+      }
+      50% {
+        opacity: 0.15;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0.1;
+      }
+    }
+
     /* Typography */
     h1, h2, h3, h4 {
       font-weight: 600;
@@ -193,11 +227,38 @@
     }
 
     .hero-content {
-      max-width: 800px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      max-width: 1200px;
       margin: 0 auto;
-      text-align: center;
-      position: relative;
-      z-index: 1;
+      padding: 0 20px;
+    }
+
+    .hero-text {
+      padding-right: 20px;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-photo {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 3px solid var(--accent-primary);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.03);
+      box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
     }
 
     .hero h1 {
@@ -219,7 +280,6 @@
 
     .hero-btns {
       display: flex;
-      justify-content: center;
       gap: 20px;
       opacity: 0;
       transform: translateY(20px);
@@ -262,11 +322,15 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 50px;
-      align-items: center;
+      align-items: start;
     }
 
     .about-text {
       padding-right: 20px;
+    }
+
+    .about-intro {
+      margin-bottom: 30px;
     }
 
     .education-items {
@@ -342,11 +406,19 @@
       box-shadow: 0 8px 25px var(--shadow-color);
     }
 
+    /* Video container styles for different aspect ratios */
     .project-media {
       position: relative;
       width: 100%;
-      height: 200px;
       overflow: hidden;
+    }
+
+    .project-media.landscape {
+      aspect-ratio: 16/9;
+    }
+
+    .project-media.square {
+      aspect-ratio: 1/1;
     }
 
     .project-media img,
@@ -492,6 +564,16 @@
 
     /* Responsive Design */
     @media (max-width: 992px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+      
+      .hero-text {
+        padding-right: 0;
+      }
+      
       .about-content {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -595,6 +677,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <!-- Floating Hexagons Background -->
+  <div id="hexagon-bg"></div>
+
   <!-- Header -->
   <header id="header">
     <div class="container header-container">
@@ -612,12 +697,18 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="container hero-content">
-      <h1>Robotics & AI Engineer</h1>
-      <p>Creating innovative solutions at the intersection of hardware and software</p>
-      <div class="hero-btns">
-        <a href="#projects" class="btn btn-primary">View My Work</a>
-        <a href="#connect" class="btn btn-secondary">Get In Touch</a>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Robotics & AI Engineer</h1>
+        <p>Creating innovative solutions at the intersection of hardware and software</p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#connect" class="btn btn-secondary">Get In Touch</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- Placeholder for profile photo - replace with your actual image -->
+        <img src="https://via.placeholder.com/350x350/1a2238/00d4ff?text=William+Kojumian" alt="William Kojumian" class="profile-photo">
       </div>
     </div>
   </section>
@@ -628,11 +719,13 @@
       <h2>About Me</h2>
       <div class="about-content">
         <div class="about-text fade-in">
-          <p>I'm passionate about robotics, AI, and creating innovative solutions. Currently pursuing my Master's in Robotics Engineering and working on projects that merge hardware and software to solve real-world problems.</p>
-          
-          <p>My research focuses on autonomous navigation systems, machine learning applications in robotics, and human-robot interaction. I believe that the future of technology lies in creating intelligent systems that can seamlessly integrate into our daily lives.</p>
-          
-          <p>When I'm not working on robotics projects, I enjoy contributing to open-source communities, writing about emerging technologies, and participating in robotics competitions.</p>
+          <div class="about-intro">
+            <p>I'm passionate about robotics, AI, and creating innovative solutions. Currently pursuing my Master's in Robotics Engineering and working on projects that merge hardware and software to solve real-world problems.</p>
+            
+            <p>My research focuses on autonomous navigation systems, machine learning applications in robotics, and human-robot interaction. I believe that the future of technology lies in creating intelligent systems that can seamlessly integrate into our daily lives.</p>
+            
+            <p>When I'm not working on robotics projects, I enjoy contributing to open-source communities, writing about emerging technologies, and participating in robotics competitions.</p>
+          </div>
         </div>
         
         <div class="education-items">
@@ -685,9 +778,9 @@
       <p class="fade-in">Here are some of my recent projects in the field of robotics and AI:</p>
       
       <div class="projects-grid">
-        <!-- Project 1 -->
+        <!-- Project 1 - Landscape video -->
         <div class="project-card fade-in">
-          <div class="project-media">
+          <div class="project-media landscape">
             <video autoplay muted loop playsinline>
               <source src="CapstoneDroneVideo.mov" type="video/mp4">
               <source src="CapstoneDroneVideo.mov" type="video/quicktime">
@@ -702,9 +795,9 @@
           </div>
         </div>
         
-        <!-- Project 2 -->
+        <!-- Project 2 - Square video -->
         <div class="project-card fade-in">
-          <div class="project-media">
+          <div class="project-media square">
             <video autoplay muted loop playsinline>
               <source src="GimbalVideo.mov" type="video/mp4">
               <source src="GimbalVideo.mov" type="video/quicktime">
@@ -719,9 +812,9 @@
           </div>
         </div>
         
-        <!-- Project 3 -->
+        <!-- Project 3 - Square video -->
         <div class="project-card fade-in">
-          <div class="project-media">
+          <div class="project-media square">
             <video autoplay muted loop playsinline>
               <source src="LeadProgrammingRobot.mov" type="video/mp4">
               <source src="LeadProgrammingRobot.mov" type="video/quicktime">
@@ -736,9 +829,9 @@
           </div>
         </div>
         
-        <!-- Project 4 -->
+        <!-- Project 4 - Square image -->
         <div class="project-card fade-in">
-          <div class="project-media">
+          <div class="project-media square">
             <img src="Roomba Cleaner.png" alt="ROS 2 TurtleSim Simulation">
           </div>
           <div class="project-content">
@@ -749,9 +842,9 @@
           </div>
         </div>
         
-        <!-- Project 5 -->
+        <!-- Project 5 - Square image -->
         <div class="project-card fade-in">
-          <div class="project-media">
+          <div class="project-media square">
             <img src="FlowerMeasurements.png" alt="Iris Dataset Classification">
           </div>
           <div class="project-content">
@@ -844,8 +937,36 @@
       });
     }
     
+    // Create floating hexagons
+    function createHexagons() {
+      const hexagonContainer = document.getElementById('hexagon-bg');
+      const hexagonCount = 15;
+      
+      for (let i = 0; i < hexagonCount; i++) {
+        const hexagon = document.createElement('div');
+        hexagon.classList.add('hexagon');
+        
+        // Random position and size
+        const size = Math.random() * 40 + 20;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 15;
+        const duration = Math.random() * 10 + 15;
+        
+        hexagon.style.width = `${size}px`;
+        hexagon.style.height = `${size * 0.577}px`; // Maintain hexagon proportions
+        hexagon.style.left = `${left}%`;
+        hexagon.style.animationDelay = `${delay}s`;
+        hexagon.style.animationDuration = `${duration}s`;
+        
+        hexagonContainer.appendChild(hexagon);
+      }
+    }
+    
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
+      // Create background hexagons
+      createHexagons();
+      
       // Trigger initial animations
       setTimeout(() => {
         const fadeElements = document.querySelectorAll('.fade-in');
