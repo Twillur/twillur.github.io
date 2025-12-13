@@ -274,7 +274,7 @@
       color: var(--accent-blue);
     }
 
-    /* Enhanced Hero Section */
+    /* Enhanced Hero Section - Modified for text-only layout */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -284,65 +284,31 @@
     }
 
     .hero-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      max-width: 1200px;
+      text-align: center;
+      max-width: 800px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
     .hero-text {
-      padding-right: 20px;
-    }
-
-    .hero-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
-    .profile-photo-container {
-      position: relative;
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
-      border: 2px solid var(--accent-blue);
-      transition: all 0.5s ease;
-      background: var(--bg-card);
-    }
-
-    .profile-photo {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      transition: transform 0.8s ease;
-    }
-
-    .profile-photo-container:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 40px rgba(185, 103, 255, 0.7);
-      border-color: var(--accent-purple);
-    }
-
-    .profile-photo-container:hover .profile-photo {
-      transform: scale(1.05);
     }
 
     .hero p {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       color: var(--text-secondary);
       margin-bottom: 2.5rem;
+      line-height: 1.8;
     }
 
     .hero-btns {
       display: flex;
       gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -703,16 +669,6 @@
 
     /* Responsive Design */
     @media (max-width: 1100px) {
-      .hero-content {
-        grid-template-columns: 1fr;
-        gap: 50px;
-        text-align: center;
-      }
-      
-      .hero-text {
-        padding-right: 0;
-      }
-      
       .about-content {
         grid-template-columns: 1fr;
         gap: 50px;
@@ -762,7 +718,7 @@
       }
 
       .hero p {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
       }
 
       .hero-btns {
@@ -791,11 +747,6 @@
         font-size: 2rem;
       }
 
-      .profile-photo-container {
-        width: 280px;
-        height: 280px;
-      }
-
       .skills-container {
         grid-template-columns: 1fr;
       }
@@ -804,6 +755,10 @@
     @media (max-width: 576px) {
       .hero h1 {
         font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
       }
 
       .education-header {
@@ -827,11 +782,6 @@
 
       .education-item, .project-card {
         padding: 20px;
-      }
-
-      .profile-photo-container {
-        width: 250px;
-        height: 250px;
       }
     }
   </style>
@@ -859,20 +809,15 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section - Modified for text-only -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-text">
         <h1>Robotics & AI Engineer</h1>
-        <p>Creating innovative solutions at the intersection of hardware and software</p>
+        <p>Creating innovative solutions at the intersection of hardware and software. Passionate about autonomous systems, industrial robotics, and machine learning applications that solve real-world challenges.</p>
         <div class="hero-btns">
           <a href="#projects" class="btn btn-primary">View My Work</a>
           <a href="#connect" class="btn btn-secondary">Get In Touch</a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <div class="profile-photo-container">
-          <img src="william-kojumian.jpg" alt="William Kojumian" class="profile-photo">
         </div>
       </div>
     </div>
@@ -963,6 +908,34 @@
       <p class="fade-in">Here are some of my recent projects in the field of robotics and AI:</p>
       
       <div class="projects-grid">
+        <!-- NEW PROJECT: Industrial Manipulator Kinematics Modelling -->
+        <div class="project-card fade-in">
+          <div class="project-media landscape">
+            <video autoplay muted loop playsinline>
+              <source src="robot_simulator_speedvideo_thumbail" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Industrial Manipulator Kinematics Modelling</h3>
+            <div class="project-tech">Python, Robotics Kinematics, Denavit-Hartenberg Parameters, 3D Simulation, Inverse Kinematics, Plot Animation</div>
+            <p class="project-description">Designed and simulated a 4+ joint industrial manipulator with at least one prismatic joint for object manipulation tasks. Implemented forward and inverse kinematics using Denavit-Hartenberg parameters to enable precise end-effector positioning. The simulation demonstrates complete animation sequences for block-stacking tasks with 3D visualization of links and joints. Features include animated trajectories, 3D space visualization, and implementation of advanced kinematics concepts.</p>
+            <div class="project-details">
+              <p><strong>Course:</strong> PDE4431 Dubai Coursework 2</p>
+              <p><strong>Deadline:</strong> December 11, 2025</p>
+              <p><strong>Key Features:</strong></p>
+              <ul style="margin-left: 20px; margin-bottom: 15px;">
+                <li>4+ joints with at least one prismatic joint</li>
+                <li>Denavit-Hartenberg parameter implementation</li>
+                <li>Complete 3D visualization and animation</li>
+                <li>Inverse kinematics for precise positioning</li>
+                <li>Simulation of pick-and-place operations</li>
+              </ul>
+            </div>
+            <a href="#" class="project-link">View Project Details</a>
+          </div>
+        </div>
+        
         <!-- Project 1 - Landscape video -->
         <div class="project-card fade-in">
           <div class="project-media landscape">
